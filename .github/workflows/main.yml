@@ -1,0 +1,12 @@
+name: Trworkflow
+on:
+  milestone:
+    types: closed
+  workflow_dispatch:
+jobs:    
+  Build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: print id
+      run: echo "id (ID!)"
