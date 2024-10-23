@@ -21,10 +21,4 @@ jobs:
    
     - name: print
       run: echo "job 4"
-  
-  job4: 
-    runs-on: ubuntu-latest
-    steps:
-    - name: print
-      run: echo "job 4"
-  
+ 
