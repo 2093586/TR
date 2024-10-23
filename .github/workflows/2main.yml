@@ -2,7 +2,7 @@ name: concurrency run2
 on: workflow_dispatch
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: SAT-PT-Group
   cancel-in-progress: false
 
 jobs:
