@@ -14,7 +14,7 @@ RUN powershell -Command \
 # Step 1: Install Google Chrome
 RUN powershell -Command \
     Invoke-WebRequest -Uri https://dl.google.com/chrome/install/GoogleChromeStandaloneEnterprise64.msi -OutFile C:\Installers\chrome_installer.msi; \
-    Start-Process msiexec.exe -ArgumentList '/i C:\Installers\chrome_installer.msi /quiet /norestart'
+    Start-Process msiexec.exe -ArgumentList '/i C:\Installers\chrome_installer.msi'
 
 
 # Step 2: Download and install JMeter
