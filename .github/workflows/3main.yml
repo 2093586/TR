@@ -1,0 +1,24 @@
+name: concurrency run3
+on: workflow_dispatch
+
+concurrency:
+  group: SAT-PT-Group
+  cancel-in-progress: false
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+   
+    steps:
+    - name: print
+      run: echo "job 1"
+  job2:   
+    needs: job1
+    runs-on: ubuntu-latest   
+    steps:
+    - name: print
+      run: echo "job 3"
+   
+    - name: print
+      run: echo "job 4"
+ 
