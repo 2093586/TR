@@ -18,4 +18,21 @@ jobs:
     steps:
     - name: print
       run: echo "job 2"
+  job3:   
+    runs-on: ubuntu-latest
+    concurrency:
+      group: example-group
+      cancel-in-progress: false
+    steps:
+    - name: print
+      run: echo "job 2"
+  
+  job4:   
+    runs-on: ubuntu-latest
+    concurrency:
+      group: example-group
+      cancel-in-progress: false
+    steps:
+    - name: print
+      run: echo "job 2"
   
