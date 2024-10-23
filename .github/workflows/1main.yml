@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     concurrency:
       group: example-group
-      cancel-in-progress: true
+      cancel-in-progress: false
     steps:
     - name: print
       run: echo "job 1"
@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     concurrency:
       group: example-group
-      cancel-in-progress: true
+      cancel-in-progress: false
     steps:
     - name: print
       run: echo "job 2"
