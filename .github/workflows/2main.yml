@@ -6,23 +6,21 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  job-1:
+  job1:
     runs-on: ubuntu-latest
    
     steps:
     - name: print
       run: echo "job 1"
   job2:   
-  
+    needs: job1
     runs-on: ubuntu-latest   
     steps:
     - name: print
-      run: echo "job 2"
-  job3: 
-    runs-on: ubuntu-latest
-    steps:
-    - name: print
       run: echo "job 3"
+   
+    - name: print
+      run: echo "job 4"
   
   job4: 
     runs-on: ubuntu-latest
