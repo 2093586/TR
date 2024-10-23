@@ -1,0 +1,32 @@
+name: concurrency run2
+on: workflow_dispatch
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  job-1:
+    runs-on: ubuntu-latest
+   
+    steps:
+    - name: print
+      run: echo "job 1"
+  job2:   
+  
+    runs-on: ubuntu-latest   
+    steps:
+    - name: print
+      run: echo "job 2"
+  job3: 
+    runs-on: ubuntu-latest
+    steps:
+    - name: print
+      run: echo "job 3"
+  
+  job4: 
+    runs-on: ubuntu-latest
+    steps:
+    - name: print
+      run: echo "job 4"
+  
