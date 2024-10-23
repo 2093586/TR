@@ -6,6 +6,8 @@ ENV JMETER_VERSION=5.6.3
 ENV SELENIUM_VERSION=4.24.0
 ENV CHROME_VERSION=130.0.6723.69
 
+ENV JMETER_HOME C:\JMeter\apache-jmeter-${JMETER_VERSION}
+ENV PATH $JMETER_HOME\bin:$PATH
 
 # Create a directory for installation files
 RUN powershell -Command \
@@ -24,8 +26,7 @@ RUN powershell -Command \
     Remove-Item C:\Installers\jmeter.zip
 
 # Set JMeter home directory
-ENV JMETER_HOME C:\JMeter\apache-jmeter-${JMETER_VERSION}
-ENV PATH $JMETER_HOME\bin:$PATH
+
 
 
 # Step 3: Download ChromeDriver and place it in a folder
