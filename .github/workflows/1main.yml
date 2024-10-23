@@ -1,0 +1,21 @@
+name: concurrency run
+on: workflow_dispatch
+
+jobs:
+  job-1:
+    runs-on: ubuntu-latest
+#    concurrency:
+ #     group: example-group
+ #     cancel-in-progress: true
+    steps:
+    - name: print
+      run: echo "job 1"
+  job2:   
+    runs-on: ubuntu-latest
+#    concurrency:
+#      group: example-group
+#      cancel-in-progress: true
+    steps:
+    - name: print
+      run: echo "job 2"
+  
