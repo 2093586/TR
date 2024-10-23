@@ -17,6 +17,17 @@ RUN powershell -Command \
     Start-Process msiexec.exe -ArgumentList '/i C:\Installers\chrome_installer.msi'
 
 
+# Step 2: Download and install JMeter
+RUN powershell -Command \
+    Invoke-WebRequest -Uri https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${env:JMETER_VERSION}.zip -OutFile C:\Installers\jmeter.zip; \
+    Expand-Archive -Path C:\Installers\jmeter.zip -DestinationPath C:\JMeter; \
+    Remove-Item C:\Installers\jmeter.zip
+
+# Set JMeter home directory
+ENV JMETER_HOME C:\JMeter\apache-jmeter-${JMETER_VERSION}
+ENV PATH $JMETER_HOME\bin:$PATH
+
+
 # Step 3: Download ChromeDriver and place it in a folder
 RUN powershell -Command \
     Invoke-WebRequest -Uri https://storage.googleapis.com/chrome-for-testing-public/${env:CHROME_VERSION}/win64/chromedriver-win64.zip -OutFile C:\Installers\chromedriver.zip; \
