@@ -8,9 +8,9 @@ ENV CHROME_VERSION=130.0.6723.69
 ENV JMETER_HOME C:\JMeter\apache-jmeter-%JMETER_VERSION%
 ENV PATH $JMETER_HOME\bin;$PATH
 
-# Create a directory for installation files
+# Create a directory for installation files using PowerShell
 RUN powershell -Command \
-    New-Item -ItemType Directory -Path C:\Installers
+    New-Item -Path 'C:\Installers' -ItemType Directory
 
 # Step 1: Install Google Chrome
 RUN powershell -Command \
