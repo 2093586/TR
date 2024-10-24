@@ -21,4 +21,4 @@ jobs:
         docker tag amzaon_ecs/sourabh:latest 739275441922.dkr.ecr.us-east-1.amazonaws.com/amzaon_ecs/sourabh:latest
     - name: push to ecr
       run: |
-       docker push 739275441922.dkr.ecr.us-east-1.amazonaws.com/amzaon_ecs/sourabh:latest
+       docker push 739275441922.dkr.ecr.us-east-1.amazonaws.com/amzaon_ecs/sourabh:v2
