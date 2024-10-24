@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/windows/servercore:ltsc2022
 # Step 5: Download and configure GitHub runner
 RUN powershell -Command \
     Invoke-WebRequest -Uri https://github.com/actions/runner/releases/download/v2.320.0/actions-runner-win-x64-2.320.0.zip  -OutFile .\runner.zip; \
-    Expand-Archive -Path .\runner.zip -DestinationPath C:\actions-runner; \
+    Expand-Archive -Path .\runner.zip -DestinationPath C:\actions-runner; 
 # Set up the GitHub runner (install and configure)
 WORKDIR C:\actions-runner
 # Register the GitHub runner
