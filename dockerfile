@@ -19,7 +19,7 @@ RUN powershell -Command \
 # Step 2: Download and install JMeter
 RUN powershell -Command \
     Invoke-WebRequest -Uri https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-$env:JMETER_VERSION.zip -OutFile C:\Installers\jmeter.zip; \
-    Expand-Archive -Path C:\Installers\jmeter.zip -DestinationPath C:\JMeter; \
+    Expand-Archive -Path C:\Installers\jmeter.zip -DestinationPath C:\jmeter; \
     Remove-Item C:\Installers\jmeter.zip
 
 # Step 3: Download ChromeDriver and place it in a folder
@@ -31,9 +31,10 @@ RUN powershell -Command \
 # Step 4: download Selenium JAR
 RUN powershell -Command \
     Invoke-WebRequest -Uri https://github.com/SeleniumHQ/selenium/releases/download/selenium-$env:SELENIUM_VERSION/selenium-java-$env:SELENIUM_VERSION.zip -OutFile C:\Installers\selenium.zip; \
+	Expand-Archive -Path C:\Installers\selenium.zip -DestinationPath C:\selenium; \
     Remove-Item C:\Installers\selenium.zip
 
-COPY C:\Installers\selenium/ C:\Installers\jmeter\apache-jmeter-5.6.3\lib
+COPY C:\selenium/ C:\jmeter\apache-jmeter-5.6.3\lib
 
 # Expose ports if needed for JMeter
 EXPOSE 1099
