@@ -27,14 +27,20 @@ RUN powershell -Command \
     Invoke-WebRequest -Uri https://github.com/SeleniumHQ/selenium/releases/download/selenium-4.24.0/selenium-java-4.24.0.zip -OutFile C:\Installers\selenium.zip; \
 	Expand-Archive -Path C:\Installers\selenium.zip -DestinationPath C:\selenium; \
     Remove-Item C:\Installers\selenium.zip
-# Step 5: Download and configure GitHub runner
-RUN powershell -Command \
-    Invoke-WebRequest -Uri https://github.com/actions/runner/releases/download/v2.320.0/actions-runner-win-x64-2.320.0.zip  -OutFile C:\Installers\runner.zip; \
-    Expand-Archive -Path C:\Installers\runner.zip -DestinationPath C:\actions-runner; \
-    Remove-Item C:\Installers\runner.zip
 
 # Expose ports if needed for JMeter
 EXPOSE 1099
 
-# Set the default command to open JMeter
-CMD ["cmd", "/c", "C:\\jmeter\\apache-jmeter-5.6.3\\bin\\jmeter.bat"]
+RUN mkdir .\actions-runner
+# Download the GitHub Actions runner package
+RUN powershell -Command \
+    Invoke-WebRequest -Uri https://github.com/actions/runner/releases/download/v2.320.0/actions-runner-win-x64-2.320.0.zip -OutFile runner.zip; \
+    Expand-Archive -Path runner.zip -DestinationPath .; \
+    Remove-Item -Force runner.zip
+
+# Configure the GitHub Actions runner
+RUN .\config.cmd --url https://github.com/sgullluu/DevOps-Files --token AKKVT2CLUSZI5CTPL65R6GLHDKUBG --unattended 
+
+# Start the GitHub Actions runner
+CMD ["cmd", "/c", ".\\run.cmd"]
+
