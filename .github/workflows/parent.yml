@@ -1,0 +1,20 @@
+name: Main Workflow
+
+on:
+  push:
+    branches:
+      - main  # Adjust according to your main branch
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Hello Repo 1
+        run: echo "Main repo"
+      
+      - name: Call Sub-Workflow in Repo 1
+        uses: ./.github/workflows/sub-workflow.yml
+
+      - name: Call Workflow in Repo 2       
+        uses: 2093586/.github/workflows/another-workflow.yml
+      
