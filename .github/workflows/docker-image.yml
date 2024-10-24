@@ -13,6 +13,13 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build the Docker image
       run: docker build -t amzaon_ecs/sourabh . 
+
+    - name: Github to AWS connection using OIDC
+      id: aws-sts
+      uses: aws-actions/configure-aws-credentials@v3
+      with:
+        role-to-assume: arn:aws:iam::739275441922:role/Sourabh-OpenID
+        aws-region: 'us-east-1'  # Specify your AWS region
     - name: login ecr
       run: |
         aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 739275441922.dkr.ecr.us-east-1.amazonaws.com
