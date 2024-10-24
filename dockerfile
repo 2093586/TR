@@ -34,7 +34,7 @@ RUN powershell -Command \
 	Expand-Archive -Path C:\Installers\selenium.zip -DestinationPath C:\selenium; \
     Remove-Item C:\Installers\selenium.zip
 
-COPY C:\selenium/ C:\jmeter\apache-jmeter-5.6.3\lib
+
 
 # Step 5: Download and configure GitHub runner
 RUN powershell -Command \
