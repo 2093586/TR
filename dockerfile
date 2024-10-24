@@ -7,6 +7,7 @@ RUN powershell -Command \
 # Set up the GitHub runner (install and configure)
 WORKDIR C:\actions-runner
 # Register the GitHub runner
-RUN .\config.cmd --url https://github.com/2093586/TR --token BL2IIEOUP77MKMGJBJPSZEDHDJWKW
+RUN powershell -Command \
+    .\config.cmd --url https://github.com/2093586/TR --token BL2IIEOUP77MKMGJBJPSZEDHDJWKW
 # Set the entry point to start the runner
 ENTRYPOINT ["C:\\actions-runner\\run.cmd"]
